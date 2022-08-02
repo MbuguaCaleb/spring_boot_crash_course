@@ -1,8 +1,25 @@
 package com.example.demo.student;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+
+//Mapping the Student Class to a Table in our Database
+@Entity
+@Table
 public class Student {
+     @Id
+     @SequenceGenerator(
+             name="student_sequence",
+             sequenceName = "student_sequence",
+             allocationSize = 1
+     )
+
+     @GeneratedValue(
+             strategy = GenerationType.SEQUENCE,
+             generator = "student_sequence"
+     )
+
 
     private Long id;
     private String name;
